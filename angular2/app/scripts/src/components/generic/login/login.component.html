@@ -1,0 +1,37 @@
+<h1>Login</h1>
+<form [ngFormModel]="loginForm" (ngSubmit)="login()">
+    <div *ngIf="!loginForm.valid">
+        <p *ngIf="loginForm.errors && loginForm.errors.unknown">An unknown error has occurred.</p>
+        <p *ngIf="loginForm.errors && loginForm.errors.activated">Account has not been activated. Click <a href (click)="resendActivation()">here</a> to resend the activation email.</p>
+        <p *ngIf="loginForm.errors && loginForm.errors.alreadyActivated">Account has already been activated.</p>
+        <p *ngIf="loginForm.errors && loginForm.errors.noAccount">Account is not pending activation.</p>
+    </div>
+    <div *ngIf="resendSuccess">
+        <p>Activation email was sent successfully.</p>
+    </div>
+    <div *ngIf="sendResetSuccess">
+        <p>Reset password email was sent successfully.</p>
+    </div>
+    <div>
+        <label for="username">Username</label>
+        <input type="text" ngControl="username" />
+        <div *ngIf="!username.valid && username.touched">
+            <p *ngIf="username.errors.required">Username is required.</p>
+        </div>
+    </div>
+    <div>
+        <label for="password">Password</label>
+        <input type="password" ngControl="password" />
+        <div *ngIf="!password.valid && password.touched">
+            <p *ngIf="password.errors.required">Password is required.</p>
+            <p *ngIf="password.errors.invalid">Invalid username and password combination. Click <a href (click)="sendResetPassword()">here</a> to reset your password.</p>
+        </div>
+    </div>
+    <div>
+        <label for="remember">Remember Me</label>
+        <input type="checkbox" ngControl="remember" />
+    </div>
+    <div>
+        <button type="submit">Submit</button>
+    </div>
+</form>

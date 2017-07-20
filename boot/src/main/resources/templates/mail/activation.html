@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="#{email.activation.title}">Activation</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<p th:text="#{email.activation.greeting(${user.username})}">
+    User
+</p>
+<p th:text="#{email.activation.text}">
+    Your JNerd account has been created, please click on the URL below to activate it:
+</p>
+<p>
+    <a th:href="@{|${baseUrl}#/activate/${user.activationKey}|}"
+       th:text="|${user.username}|">Activation Link</a>
+</p>
+<p>
+    <span th:text="#{email.activation.presignature}">Regards, </span>
+    <br/>
+    <em th:text="#{email.signature}">JNerd.</em>
+</p>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<h1>Register</h1>
+<form [ngFormModel]="registerForm" (ngSubmit)="register()">
+    <div *ngIf="!registerForm.valid">
+        <p *ngIf="registerForm.errors && registerForm.errors.unknown">An unknown error has occurred.</p>
+    </div>
+    <div *ngIf="registerSuccess">
+        Registration has completed successfully. An activation email has been sent to the email address provided.
+    </div>
+    <div>
+        <label for="username">Username</label>
+        <input type="text" ngControl="username" />
+        <div *ngIf="!username.valid && username.touched">
+            <p *ngIf="username.errors.required">Username is required.</p>
+            <p *ngIf="username.errors.maxlength">Username must be less than 50 characters.</p>
+            <p *ngIf="username.errors.uniqueUsername">Username is already taken.</p>
+        </div>
+    </div>
+    <div>
+        <label for="email">Email</label>
+        <input type="text" ngControl="email" />
+        <div *ngIf="!email.valid && email.touched">
+            <p *ngIf="email.errors.required">An email address is required.</p>
+            <p *ngIf="email.errors.pattern">The email address must be a valid email address.</p>
+            <p *ngIf="email.errors.maxlength">The email address must be less than 100 characters.</p>
+            <p *ngIf="email.errors.uniqueEmail">The email address is already taken.</p>
+        </div>
+    </div>
+    <div ngControlGroup="passwords">
+        <div *ngIf="!registerForm.controls.passwords.valid && password.touched && retypePassword.touched">
+            <p *ngIf="registerForm.controls.passwords.errors && registerForm.controls.passwords.errors.matchingFields">Password fields do not match.</p>
+        </div>
+        <div>
+            <label for="password">Password</label>
+            <input type="password" ngControl="password" />
+            <div *ngIf="!password.valid && password.touched">
+                <p *ngIf="password.errors.required">Password is required.</p>
+            </div>
+        </div>
+        <div>
+            <label for="password">Retype Password</label>
+            <input type="password" ngControl="retypePassword" />
+        </div>
+    </div>
+    <div>
+        <button type="submit">Submit</button>
+    </div>
+</form>

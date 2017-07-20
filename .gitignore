@@ -1,0 +1,25 @@
+# IDE settings
+.idea
+boot/.gradle
+
+# Node
+angular/node_modules
+angular2/node_modules
+
+# H2
+boot/src/main/resources/.h2.server.properties
+boot/db/jnerd.*.db
+
+# Built files
+angular/dist
+angular/app/scripts/dist
+angular/app/scripts/src/config/dist
+angular/app/styles/dist
+angular/tools/swagger
+angular2/dist
+angular2/app/scripts/dist
+angular2/app/scripts/src/config/dist
+angular2/app/styles/dist
+angular2/tools/swagger
+boot/build
+boot/out

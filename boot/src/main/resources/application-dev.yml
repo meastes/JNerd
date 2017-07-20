@@ -1,0 +1,8 @@
+server:
+  port: 8080
+spring:
+  messages:
+    cache-seconds: -1
+jnerd:
+  baseUrl: http://localhost:8080/jnerd
+  path: /jnerd

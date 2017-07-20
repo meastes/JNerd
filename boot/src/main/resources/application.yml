@@ -1,0 +1,33 @@
+jwt:
+  secret: c2VjcmV0
+  expirationSeconds: 300 # Five minutes
+  rememberExpirationSeconds: 604800 # One week
+server:
+  port: 8081
+  context-path: /jnerd
+security:
+  sessions: never
+spring:
+  datasource:
+    url: "jdbc:h2:./db/jnerd;FILE_LOCK=FS"
+  jpa:
+    hibernate:
+      ddl-auto: update
+  mail:
+    host: localhost
+    port: 8025
+    username: jnerd
+    password: password
+  messages:
+    basename: language/language
+    cache-seconds: 0
+jnerd:
+  baseUrl: http://localhost:8080/
+  path: /
+  cors:
+    origins: http://localhost:8080
+  mail:
+    from: mail@jnerd.com
+    subject:
+      activation: JNerd Activation
+      passwordReset: JNerd Password Reset

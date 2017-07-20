@@ -1,0 +1,6 @@
+<div *ngIf="authenticated">
+    <nrd-hello-world [message]="message"></nrd-hello-world>
+</div>
+<div *ngIf="!authenticated">
+    Please <a [routerLink]="['/login']">login</a> or <a [routerLink]="['/register']">register</a>.
+</div>

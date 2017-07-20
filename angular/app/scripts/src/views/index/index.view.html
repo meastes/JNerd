@@ -1,0 +1,26 @@
+<div ng-switch="authenticated">
+    <div ng-switch-when="true">
+        <nrd-hello-world></nrd-hello-world>
+    </div>
+    <div ng-switch-default>
+        <div flex layout="column">
+            <section md-whiteframe="z1" style="max-width: 800px">
+                <md-toolbar class="md-warn">
+                    <div class="md-toolbar-tools">
+                        <h2 class="md-flex" translate="global.error">Error</h2>
+                    </div>
+                </md-toolbar>
+                <md-content flex layout-padding>
+                    <p  translate="index.error.login"
+                        translate-compile
+                        translate-value-arg0="<a ui-sref='login'>"
+                        translate-value-arg1="</a>"
+                        translate-value-arg2="<a ui-sref='register'>"
+                        translate-value-arg3="</a>">
+                        Please <a ui-sref="login">login</a> or <a ui-sref="register">register</a>
+                    </p>
+                </md-content>
+            </section>
+        </div>
+    </div>
+</div>

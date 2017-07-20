@@ -1,0 +1,8 @@
+{
+    "translations": {
+        "enabled": true
+    },
+    "rest": {
+        "baseUrl": "http://localhost:8081/jnerd"
+    }
+}

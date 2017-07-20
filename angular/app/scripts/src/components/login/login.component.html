@@ -1,0 +1,48 @@
+<div flex layout="column">
+    <section md-whiteframe="z1" style="max-width: 800px">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2 class="md-flex" translate="login.title">Login</h2>
+            </div>
+        </md-toolbar>
+        <md-content flex layout-padding>
+            <form name="loginForm" ng-submit="$ctrl.login()">
+                <div ng-messages="loginForm.$error">
+                    <div ng-message="unknown" class="text-error" translate="global.error.unknown">An unknown error has occurred.</div>
+                    <div ng-message="activated" class="text-error">
+                        <span translate="login.error.notactivated"
+                              translate-compile
+                              translate-value-arg0="<a href ng-click='$ctrl.resendActivation()'>"
+                              translate-value-arg1="</a>">
+                                Account has not been activated. Click <a href ng-click="$ctrl.resendActivation()">here</a> to resend the activation email.
+                        </span>
+                    </div>
+                    <div ng-message="alreadyActivated" class="text-error" translate="login.error.activated">Account has already been activated.</div>
+                    <div ng-message="noAccount" class="text-error" translate="login.error.nopendingactivation">Account is not pending activation.</div>
+                </div>
+                <div ng-if="$ctrl.resendSuccess" class="text-success" translate="login.activate.success">Activation email was sent successfully.</div>
+                <div ng-if="$ctrl.sendResetSuccess" class="text-success" translate="login.reset.success">Reset password email was sent successfully.</div>
+                <md-input-container class="md-block" flex-gt-xs>
+                    <label translate="login.label.username">Username</label>
+                    <input type="text" name="username" ng-model="$ctrl.username" required />
+                    <div ng-messages="loginForm.username.$error">
+                        <div ng-message="required" translate="validate.required" translate-value-arg0="Username">Username is required.</div>
+                    </div>
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-xs>
+                    <label translate="login.label.password">Password</label>
+                    <input type="password" name="password" ng-model="$ctrl.password" />
+                    <div ng-messages="loginForm.password.$error" ng-if="loginForm.password.$touched && loginForm.$submitted" role="alert">
+                        <div ng-message="loginValid" translate="login.error.invalidpass">Invalid username and password combination. Click <a href ng-click="$ctrl.sendResetPassword()">here</a> to set your password.</div>
+                    </div>
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-xs>
+                    <md-checkbox name="rememberMe" ng-model="$ctrl.rememberMe">
+                        <span translate="login.label.remember">Remember Me</span>
+                    </md-checkbox>
+                </md-input-container>
+                <md-button class="md-raised md-primary" type="submit" translate="global.submit">Submit</md-button>
+            </form>
+        </md-content>
+    </section>
+</div>

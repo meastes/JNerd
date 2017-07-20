@@ -1,0 +1,18 @@
+{
+  "presets": ["es2015", "stage-1"],
+  "plugins": [
+      "angular2-annotations",
+      "transform-decorators-legacy",
+      "transform-class-properties",
+      "transform-flow-strip-types",
+      "transform-class-properties",
+      ["module-alias", [
+          { "src": "./app/scripts/src/angular-nrd", "expose": "angular-nrd" },
+          { "src": "./app/scripts/src/components", "expose": "components" },
+          { "src": "./app/scripts/src/config", "expose": "config" },
+          { "src": "./app/scripts/src/services", "expose": "services" },
+          { "src": "./app/scripts/src/stores", "expose": "stores" },
+          { "src": "./app/scripts/src/validators", "expose": "validators" },
+      ]]
+  ]
+}

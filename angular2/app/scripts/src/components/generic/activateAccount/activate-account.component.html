@@ -1,0 +1,10 @@
+<h1>Account Activation</h1>
+
+<div [ngSwitch]="errorCode">
+    <p *ngSwitchWhen="'alreadyActivated'">This account has already been activated.</p>
+    <p *ngSwitchWhen="'invalidKey'">Missing or invalid activation key.</p>
+    <p *ngSwitchWhen="'unknown'">An unknown error has occurred.</p>
+</div>
+<p *ngIf="success">
+    Account successfully activated. Click <a [routerLink]="['/login']">here</a> to login.
+</p>

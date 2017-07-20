@@ -1,0 +1,50 @@
+<div flex layout="column">
+    <section md-whiteframe="z1" style="max-width: 800px">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2 class="md-flex" translate="register.title">Register</h2>
+            </div>
+        </md-toolbar>
+        <md-content flex layout-padding>
+            <form name="registerForm" ng-submit="$ctrl.register()">
+                <div ng-messages="registerForm.$error">
+                    <div ng-message="unknown" class="text-error" translate="global.error.unknown">An unknown error has occurred.</div>
+                </div>
+                <div ng-if="$ctrl.registerSuccess" class="text-success" translate="register.success">
+                    Registration has completed successfully. An activation email has been sent to the email address provided.
+                </div>
+                <md-input-container class="md-block" flex-gt-xs>
+                    <label translate="register.label.username">Username</label>
+                    <input type="text" name="username" ng-model="$ctrl.username" md-maxlength="50" required />
+                    <div ng-messages="registerForm.username.$error">
+                        <div ng-message="required" translate="validate.required" translate-value-arg0="Username">Username is required.</div>
+                        <div ng-message="md-maxlength" translate="validate.maxlength" translate-value-arg0="Username" translate-value-arg1="50">Username must be less than 50 characters.</div>
+                        <div ng-message="unique" translate="register.error.notunique" translate-value-arg0="Username">Username is already taken.</div>
+                    </div>
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-xs>
+                    <label translate="register.label.email">Email</label>
+                    <input type="text" name="email" ng-model="$ctrl.email" md-maxlength="100" ng-pattern="/^.+@.+\..+$/" required />
+                    <div ng-messages="registerForm.email.$error">
+                        <div ng-message="required" translate="validate.required" translate-value-arg0="An email address">An email address is required.</div>
+                        <div ng-message="md-maxlength" translate="validate.maxlength" translate-value-arg0="The email address" translate-value-arg1="100">The email address must be less than 100 characters.</div>
+                        <div ng-message="pattern" translate="register.error.validemail">The email address must be a valid email address.</div>
+                        <div ng-message="unique" translate="register.error.notunique" translate-value-arg0="The email address">The email address is already taken.</div>
+                    </div>
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-xs>
+                    <label translate="register.label.password">Password</label>
+                    <input type="password" name="password" ng-model="$ctrl.password" />
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-xs>
+                    <label translate="register.label.password.retype">Retype Password</label>
+                    <input type="password" name="passwordVerify" ng-model="$ctrl.passwordVerify" />
+                    <div ng-messages="registerForm.passwordVerify.$error" role="alert">
+                        <div ng-message="match" translate="register.error.passwordmatch">The password fields do not match.</div>
+                    </div>
+                </md-input-container>
+                <md-button class="md-raised md-primary" type="submit" translate="global.submit">Submit</md-button>
+            </form>
+        </md-content>
+    </section>
+</div>

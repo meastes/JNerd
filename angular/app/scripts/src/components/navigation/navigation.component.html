@@ -1,0 +1,24 @@
+<md-toolbar>
+    <div class="md-toolbar-tools">
+        <md-button aria-label="Home" ui-sref="index" translate="nav.home">
+            Home
+        </md-button>
+        <md-button aria-label="Register" ui-sref="register" ng-if="!$ctrl.authenticated" translate="nav.register">
+            Register
+        </md-button>
+        <md-button aria-label="Login" ui-sref="login" ng-if="!$ctrl.authenticated" translate="nav.login">
+            Login
+        </md-button>
+        <span flex></span>
+        <md-menu ng-if="$ctrl.authenticated">
+            <md-button class="md-icon-button" aria-label="More" ng-click="$mdOpenMenu($event)">
+                <md-icon md-svg-icon="media/images/icons/more_vert.svg"></md-icon>
+            </md-button>
+            <md-menu-content width="4">
+                <md-menu-item>
+                    <md-button ng-click="$ctrl.logout()" translate="nav.logout">Logout</md-button>
+                </md-menu-item>
+            </md-menu-content>
+        </md-menu>
+    </div>
+</md-toolbar>
